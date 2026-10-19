@@ -1,4 +1,8 @@
-const { ACCESS_TOKEN, SPACE_ID, ANALYTICS_ID } = process.env;
+const {
+  ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN,
+  SPACE_ID = process.env.CONTENTFUL_SPACE_ID,
+  ANALYTICS_ID,
+} = process.env;
 
 const plugins = [
   {
