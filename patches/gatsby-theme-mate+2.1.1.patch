@@ -1,0 +1,42 @@
+diff --git a/node_modules/gatsby-theme-mate/gatsby-node.js b/node_modules/gatsby-theme-mate/gatsby-node.js
+index 2209937..5b74dee 100644
+--- a/node_modules/gatsby-theme-mate/gatsby-node.js
++++ b/node_modules/gatsby-theme-mate/gatsby-node.js
+@@ -1,24 +1,6 @@
+-const assert = require('assert');
+-const gatsbySourceMedium = require('gatsby-source-medium/gatsby-node');
+-const { createClient } = require('contentful');
+-
+-const getAboutEntry = (entry) => entry.sys.contentType.sys.id === 'about';
+-
+ const LandingTemplate = require.resolve(`./src/templates/Home.tsx`);
+ const NotFoundTemplate = require.resolve(`./src/templates/NotFound.tsx`);
+ 
+-exports.sourceNodes = async (gatsbyConfig, themeOptions) => {
+-  const { spaceId: space, accessToken } = themeOptions;
+-  const client = createClient({ space, accessToken });
+-
+-  const { items } = await client.getEntries();
+-  const about = items.find(getAboutEntry);
+-  assert(about, "Can't fetch about entry from Contentful");
+-  const { mediumUser = '@medium' } = about.fields;
+-
+-  await gatsbySourceMedium.sourceNodes(gatsbyConfig, { username: mediumUser });
+-};
+-
+ exports.createPages = async ({ actions }, themeOptions) => {
+   const { landingPath = '/' } = themeOptions;
+   const { createPage } = actions;
+diff --git a/node_modules/gatsby-theme-mate/src/sections/Landing.tsx b/node_modules/gatsby-theme-mate/src/sections/Landing.tsx
+index b8681d9..3681a0a 100644
+--- a/node_modules/gatsby-theme-mate/src/sections/Landing.tsx
++++ b/node_modules/gatsby-theme-mate/src/sections/Landing.tsx
+@@ -34,7 +34,7 @@ const LandingPage = () => {
+         textAlign="center"
+         style={centerHorizontally}
+       >
+-        <TextLoop interval={5000}>
++        <TextLoop interval={2500}>
+           {roles
+             .sort(() => (deterministic ? 1 : Math.random() - 0.5))
+             .map((text) => (
