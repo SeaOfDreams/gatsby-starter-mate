@@ -27,6 +27,32 @@ index 2209937..5b74dee 100644
  exports.createPages = async ({ actions }, themeOptions) => {
    const { landingPath = '/' } = themeOptions;
    const { createPage } = actions;
+diff --git a/node_modules/gatsby-theme-mate/src/components/Footer.tsx b/node_modules/gatsby-theme-mate/src/components/Footer.tsx
+index abdbe4b..5a6045c 100644
+--- a/node_modules/gatsby-theme-mate/src/components/Footer.tsx
++++ b/node_modules/gatsby-theme-mate/src/components/Footer.tsx
+@@ -15,7 +15,7 @@ const Footer = () => {
+       <FooterContainer>
+         <Fade direction="left" triggerOnce>
+           <Text fontSize={[2, 3]} color="background">
+-            <span>{`${name} Portfolio - Powered by `}</span>
++            <span>{`${name} - Powered by `}</span>
+             <Link href={GATSBY_URL}>Gatsby</Link>
+             <span>, </span>
+             <Link href={CONTENTFUL_URL}>Contentful</Link>
+diff --git a/node_modules/gatsby-theme-mate/src/components/Helmet.tsx b/node_modules/gatsby-theme-mate/src/components/Helmet.tsx
+index 12a30ca..321c7c3 100644
+--- a/node_modules/gatsby-theme-mate/src/components/Helmet.tsx
++++ b/node_modules/gatsby-theme-mate/src/components/Helmet.tsx
+@@ -10,7 +10,7 @@ type Props = {
+ 
+ const Helmet = ({ theme }: Props) => {
+   const { name, description, profile } = useHelmetQuery();
+-  const title = `${name} Portfolio`;
++  const title = `${name} - Entrepreneur & Mountain Guide`;
+ 
+   return (
+     <ReactHelmet htmlAttributes={{ lang: 'en' }}>
 diff --git a/node_modules/gatsby-theme-mate/src/sections/Landing.tsx b/node_modules/gatsby-theme-mate/src/sections/Landing.tsx
 index b8681d9..3681a0a 100644
 --- a/node_modules/gatsby-theme-mate/src/sections/Landing.tsx
